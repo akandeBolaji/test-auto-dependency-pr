@@ -30,7 +30,7 @@ jobs:
           
       # test PR
       - name: Pull Request another repository for update dependency
-        uses: akandeBolaji/change-dependency-package@v0.0.1
+        uses: akandeBolaji/change-dependency-package@v0.0.2
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
