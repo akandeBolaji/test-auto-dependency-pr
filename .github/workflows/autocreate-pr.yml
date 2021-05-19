@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+    push:
+      tags:
+        - '*'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      # Get Current tag
+      - name: 'Get Curent tag'
+        id: currenttag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
+          
+      # test PR
+      - name: Create pull request
+        uses: akandeBolaji/change-dependency-package@v0.0.1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          package_name: unicons
+          package_version: ${{ steps.currenttag.outputs.tag }}
+          destination_repo: https://github.com/akandeBolaji/test-pr
+          destination_base_branch: unicons-${{ steps.currenttag.outputs.tag }}-update
+          destination_head_branch: master
+          user_email: akandebolajidanielofficial@gmail.com
+          user_name: akandeBolaji
+          pull_request_reviewers: akandeBolaji
