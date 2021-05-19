@@ -36,7 +36,7 @@ jobs:
         with:
           package_name: unicons
           package_version: ${{ steps.currenttag.outputs.tag }}
-          destination_repo: https://github.com/akandeBolaji/test-pr
+          destination_repo: test-pr
           destination_base_branch: unicons-${{ steps.currenttag.outputs.tag }}-update
           destination_head_branch: master
           user_email: akandebolajidanielofficial@gmail.com
