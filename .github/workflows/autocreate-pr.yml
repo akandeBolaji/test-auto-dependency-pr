@@ -37,8 +37,8 @@ jobs:
           package_name: unicons
           package_version: ${{ steps.currenttag.outputs.tag }}
           destination_repo: akandeBolaji/test-pr
-          destination_base_branch: unicons-${{ steps.currenttag.outputs.tag }}-update
-          destination_head_branch: master
+          destination_base_branch: master
+          destination_head_branch: unicons-${{ steps.currenttag.outputs.tag }}-update
           user_email: akandebolajidanielofficial@gmail.com
           user_name: akandeBolaji
           pull_request_reviewers: akandeBolaji
