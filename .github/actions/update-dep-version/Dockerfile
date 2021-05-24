@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add --no-cache git go jq nodejs npm && \
+RUN apk add --no-cache git go jq gh nodejs npm && \
     git clone --depth=1 https://github.com/cli/cli.git gh-cli && \
     cd gh-cli && \
     mv ./bin/gh /usr/local/bin/
