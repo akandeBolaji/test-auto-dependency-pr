@@ -5,7 +5,7 @@ set -x
 
 if [ -z "$INPUT_PACKAGE_NAME" ]
 then
-  echo "Package name and version must be defined"
+  echo "Package name must be defined"
   return -1
 fi
 
